@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../favicon.ico" sizes="any">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <title>Firefox Policy Generator</title>
+<link rel="stylesheet" href="css/styles-min.css">
+<script src="js/app-min.js" defer></script>
+</head>
+<body>
+    <!-- Separate header -->
+    <header class="header">
+        <h1>Firefox Policy Generator</h1>
+        <p>Professional Firefox policy configuration made simple</p>
+    </header>
+
+    <!-- Main content wrapper -->
+    <div class="content-wrapper">
+        <div class="main-content">
+            <div class="settings-panel">
+                <!-- Basic Settings -->
+                <div class="section">
+                    <h3>Basic Settings</h3>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="dontCheckDefaultBrowser" checked>
+                                <span class="slider"></span>
+                            </div>
+                            Don't check if Firefox is default browser
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disableFeedbackCommands" checked>
+                                <span class="slider"></span>
+                            </div>
+                            Disable feedback commands
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disableFirefoxAccounts" checked>
+                                <span class="slider"></span>
+                            </div>
+                            Disable Firefox Accounts
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disableFirefoxScreenshots">
+                                <span class="slider"></span>
+                            </div>
+                            Disable Firefox Screenshots
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disableFirefoxStudies" checked>
+                                <span class="slider"></span>
+                            </div>
+                            Disable Firefox Studies
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disableTelemetry" checked>
+                                <span class="slider"></span>
+                            </div>
+                            Disable Telemetry
+                        </label>
+                    </div>
+                </div>
+
+                <!-- UI Settings -->
+                <div class="section">
+                    <h3>User Interface</h3>
+                    <div class="form-group">
+                        <label class="text-label">Display Bookmarks Toolbar</label>
+                        <select class="select-field" id="displayBookmarksToolbar">
+                            <option value="always">Always</option>
+                            <option value="never" selected>Never</option>
+                            <option value="newtab">New Tab Only</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-label">Display Menu Bar</label>
+                        <select class="select-field" id="displayMenuBar">
+                            <option value="default-on">Default On</option>
+                            <option value="default-off">Default Off</option>
+                            <option value="never" selected>Never</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disableDeveloperTools">
+                                <span class="slider"></span>
+                            </div>
+                            Disable Developer Tools
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Homepage Settings -->
+                <div class="section">
+                    <h3>Homepage & New Tab</h3>
+                    <div class="form-group">
+                        <label class="text-label">Homepage URL</label>
+                        <input type="text" class="input-field" id="homepageURL" value="about:home" placeholder="Enter homepage URL">
+                    </div>
+                    <div class="form-group">
+                        <label class="text-label">Start Page</label>
+                        <select class="select-field" id="startPage">
+                            <option value="none">None</option>
+                            <option value="homepage" selected>Homepage</option>
+                            <option value="previous-session">Previous Session</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Firefox Home Settings -->
+                <div class="section">
+                    <h3>Firefox Home</h3>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="homeSearch" checked>
+                                <span class="slider"></span>
+                            </div>
+                            Show Search
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="homeTopSites">
+                                <span class="slider"></span>
+                            </div>
+                            Show Top Sites
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="homeSponsoredTopSites">
+                                <span class="slider"></span>
+                            </div>
+                            Show Sponsored Top Sites
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="homeHighlights">
+                                <span class="slider"></span>
+                            </div>
+                            Show Highlights
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="homePocket">
+                                <span class="slider"></span>
+                            </div>
+                            Show Pocket
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Privacy Settings -->
+                <div class="section">
+                    <h3>Privacy & Security</h3>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="noDefaultBookmarks" checked>
+                                <span class="slider"></span>
+                            </div>
+                            No Default Bookmarks
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="offerToSaveLogins">
+                                <span class="slider"></span>
+                            </div>
+                            Offer to Save Logins
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="webSuggestions" checked>
+                                <span class="slider"></span>
+                            </div>
+                            Web Suggestions
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="sponsoredSuggestions">
+                                <span class="slider"></span>
+                            </div>
+                            Sponsored Suggestions
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Extensions -->
+                <div class="section">
+                    <h3>Extensions</h3>
+                    <div class="form-group">
+                        <label class="text-label">Extensions to Install</label>
+                        <div class="extension-list" id="extensionInstallList">
+                            <div class="extension-item">
+                                <span>uBlock Origin</span>
+                                <button class="btn btn-danger" onclick="removeExtension(this, 'install')">Remove</button>
+                            </div>
+                            <div class="extension-item">
+                                <span>Bitwarden</span>
+                                <button class="btn btn-danger" onclick="removeExtension(this, 'install')">Remove</button>
+                            </div>
+                            <div class="extension-item">
+                                <span>Multi-Account Containers</span>
+                                <button class="btn btn-danger" onclick="removeExtension(this, 'install')">Remove</button>
+                            </div>
+                        </div>
+                        <input type="text" class="input-field" id="newExtensionURL" placeholder="Extension XPI URL" style="margin-top: 12px;">
+                        <button class="btn btn-primary" onclick="addExtension('install')" style="margin-top: 8px;">Add Extension</button>
+                    </div>
+                </div>
+
+                <!-- Search Engines -->
+                <div class="section">
+                    <h3>Search Engines</h3>
+                    <div class="form-group">
+                        <label class="text-label">Default Search Engine</label>
+                        <select class="select-field" id="defaultSearchEngine">
+                            <option value="G" selected>Google</option>
+                            <option value="Brave">Brave</option>
+                            <option value="Startpage">Startpage</option>
+                            <option value="YouTube">YouTube</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-label">Custom Search Engines</label>
+                        <div class="extension-list" id="searchEngineList">
+                            <div class="extension-item">
+                                <span>Google (!g)</span>
+                                <button class="btn btn-danger" onclick="removeExtension(this, 'search')">Remove</button>
+                            </div>
+                            <div class="extension-item">
+                                <span>Brave (!b)</span>
+                                <button class="btn btn-danger" onclick="removeExtension(this, 'search')">Remove</button>
+                            </div>
+                            <div class="extension-item">
+                                <span>Startpage</span>
+                                <button class="btn btn-danger" onclick="removeExtension(this, 'search')">Remove</button>
+                            </div>
+                            <div class="extension-item">
+                                <span>YouTube (!yt)</span>
+                                <button class="btn btn-danger" onclick="removeExtension(this, 'search')">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="output-panel">
+                <div class="instructions">
+                    <h4>Installation Instructions</h4>
+                    <div class="os-tabs">
+                        <button class="os-tab active" onclick="showOS('windows')">Windows</button>
+                        <button class="os-tab" onclick="showOS('mac')">macOS</button>
+                        <button class="os-tab" onclick="showOS('linux')">Linux</button>
+                    </div>
+                    <div class="os-content active" id="windows">
+                        <p><strong>Windows:</strong></p>
+                        <p>1. Download the policies.json file</p>
+                        <p>2. Place it in one of these locations:</p>
+                        <div class="path-code">C:\Program Files\Mozilla Firefox\distribution\policies.json</div>
+                        <p>OR</p>
+                        <div class="path-code">C:\Program Files (x86)\Mozilla Firefox\distribution\policies.json</div>
+                        <p>3. Restart Firefox to apply changes</p>
+                    </div>
+                    <div class="os-content" id="mac">
+                        <p><strong>macOS:</strong></p>
+                        <p>1. Download the policies.json file</p>
+                        <p>2. Place it in:</p>
+                        <div class="path-code">/Applications/Firefox.app/Contents/Resources/distribution/policies.json</div>
+                        <p>3. Restart Firefox to apply changes</p>
+                    </div>
+                    <div class="os-content" id="linux">
+                        <p><strong>Linux:</strong></p>
+                        <p>1. Download the policies.json file</p>
+                        <p>2. Place it in:</p>
+                        <div class="path-code">/usr/lib/firefox/distribution/policies.json</div>
+                        <p>OR</p>
+                        <div class="path-code">/etc/firefox/policies/policies.json</div>
+                        <p>3. Restart Firefox to apply changes</p>
+                    </div>
+                </div>
+
+                <div class="success-message" id="successMessage">
+                    ✅ Policy configuration ready for download!
+                </div>
+                
+                <div class="export-actions">
+                    <button class="btn btn-success" onclick="copyToClipboard()">Copy to Clipboard</button>
+                    <button class="btn btn-secondary" onclick="downloadPolicy()">Download JSON</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
