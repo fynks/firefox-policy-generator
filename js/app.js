@@ -8,7 +8,7 @@
         let searchEngines = [
             { name: "G", url: "https://www.google.com/search?q={searchTerms}", alias: "!g" },
             { name: "Brave", url: "https://search.brave.com/search?q={searchTerms}", alias: "!b" },
-            { name: "Startpage", url: "https://www.startpage.com/do/search?q={searchTerms}", alias: "" },
+            { name: "Startpage", url: "https://www.startpage.com/do/search?q={searchTerms}", alias: "!s" },
             { name: "DuckDuckGo", url: "https://duckduckgo.com/?q={searchTerms}", alias: "!ddg" },
             { name: "YouTube", url: "https://www.youtube.com/results?search_query={searchTerms}", alias: "!yt" }
         ];
@@ -53,9 +53,6 @@
             if (document.getElementById('disableFirefoxAccounts').checked) {
                 policy.policies.DisableFirefoxAccounts = true;
             }
-            if (document.getElementById('disableFirefoxScreenshots').checked) {
-                policy.policies.DisableFirefoxScreenshots = true;
-            }
             if (document.getElementById('disableFirefoxStudies').checked) {
                 policy.policies.DisableFirefoxStudies = true;
             }
@@ -65,29 +62,14 @@
             if (document.getElementById('disableAppUpdate').checked) {
                 policy.policies.DisableAppUpdate = true;
             }
-            if (document.getElementById('disableSystemAddonUpdate').checked) {
-                policy.policies.DisableSystemAddonUpdate = true;
-            }
 
             // UI settings
             const bookmarksToolbar = document.getElementById('displayBookmarksToolbar').value;
             if (bookmarksToolbar !== 'always') {
                 policy.policies.DisplayBookmarksToolbar = bookmarksToolbar;
             }
-
-            const menuBar = document.getElementById('displayMenuBar').value;
-            if (menuBar !== 'default-on') {
-                policy.policies.DisplayMenuBar = menuBar;
-            }
-
-            if (document.getElementById('disableDeveloperTools').checked) {
-                policy.policies.DisableDeveloperTools = true;
-            }
             if (document.getElementById('disablePasswordReveal').checked) {
                 policy.policies.DisablePasswordReveal = true;
-            }
-            if (document.getElementById('disablePrivateBrowsing').checked) {
-                policy.policies.DisablePrivateBrowsing = true;
             }
 
             // Homepage settings
@@ -111,9 +93,7 @@
             policy.policies.FirefoxHome = {
                 Search: document.getElementById('homeSearch').checked,
                 TopSites: document.getElementById('homeTopSites').checked,
-                SponsoredTopSites: document.getElementById('homeSponsoredTopSites').checked,
                 Highlights: document.getElementById('homeHighlights').checked,
-                Pocket: document.getElementById('homePocket').checked,
                 SponsoredPocket: false,
                 Snippets: false,
                 Locked: false
@@ -137,7 +117,7 @@
             if (document.getElementById('trackingProtection').checked) {
                 policy.policies.EnableTrackingProtection = {
                     Value: true,
-                    Locked: true,
+                    Locked: false,
                     Cryptomining: true,
                     Fingerprinting: true
                 };
@@ -194,9 +174,6 @@
                     Default: false
                 };
             }
-            if (!document.getElementById('extensionRecommendations').checked) {
-                policy.policies.ExtensionRecommendations = false;
-            }
 
             // Search engines
             if (searchEngines.length > 0) {
@@ -240,14 +217,6 @@
                 policy.policies.WebRTCIPHandlingPolicy = "disable_non_proxied_udp";
             }
 
-            // Proxy settings
-            const proxyMode = document.getElementById('proxyMode').value;
-            if (proxyMode !== 'none') {
-                policy.policies.Proxy = {
-                    Mode: proxyMode,
-                    Locked: true
-                };
-            }
 
             // Additional security policies
             policy.policies.OverrideFirstRunPage = "";

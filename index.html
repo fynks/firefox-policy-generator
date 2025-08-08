@@ -58,7 +58,7 @@
 
 
 <link rel="stylesheet" href="css/styles-min.css">
-<script src="js/app-min.js" defer></script>
+<script src="js/app.js" defer></script>
 </head>
 <body>
     <!-- Separate header -->
@@ -144,18 +144,6 @@
                         </label>
                     </div>
                     
-                    <div class="form-group">
-                        <label>
-                            <div class="toggle-switch">
-                                <input type="checkbox" id="disableFirefoxScreenshots">
-                                <span class="slider"></span>
-                            </div>
-                            <div class="label-content">
-                                <span class="label-title">Disable Firefox Screenshots</span>
-                                <span class="label-description">Removes the built-in screenshot tool from Firefox</span>
-                            </div>
-                        </label>
-                    </div>
                     
                     <div class="form-group">
                         <label>
@@ -196,18 +184,6 @@
                         </label>
                     </div>
 
-                    <div class="form-group">
-                        <label>
-                            <div class="toggle-switch">
-                                <input type="checkbox" id="disableSystemAddonUpdate">
-                                <span class="slider"></span>
-                            </div>
-                            <div class="label-content">
-                                <span class="label-title">Disable System Add-on Updates</span>
-                                <span class="label-description">Prevents automatic updates of built-in Firefox add-ons</span>
-                            </div>
-                        </label>
-                    </div>
                 </div>
 
                 <!-- UI Settings -->
@@ -224,29 +200,6 @@
                         </select>
                         <small class="help-text">Controls when the bookmarks toolbar is visible</small>
                     </div>
-                    
-                    <div class="form-group">
-                        <label class="text-label">Display Menu Bar</label>
-                        <select class="select-field" id="displayMenuBar">
-                            <option value="default-on">Default On</option>
-                            <option value="default-off">Default Off</option>
-                            <option value="never" selected>Never</option>
-                        </select>
-                        <small class="help-text">Controls the traditional menu bar (File, Edit, View, etc.)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>
-                            <div class="toggle-switch">
-                                <input type="checkbox" id="disableDeveloperTools">
-                                <span class="slider"></span>
-                            </div>
-                            <div class="label-content">
-                                <span class="label-title">Disable Developer Tools</span>
-                                <span class="label-description">Prevents access to F12 developer tools (recommended for security)</span>
-                            </div>
-                        </label>
-                    </div>
 
                     <div class="form-group">
                         <label>
@@ -261,18 +214,7 @@
                         </label>
                     </div>
 
-                    <div class="form-group">
-                        <label>
-                            <div class="toggle-switch">
-                                <input type="checkbox" id="disablePrivateBrowsing">
-                                <span class="slider"></span>
-                            </div>
-                            <div class="label-content">
-                                <span class="label-title">Disable Private Browsing</span>
-                                <span class="label-description">Removes access to private/incognito browsing mode</span>
-                            </div>
-                        </label>
-                    </div>
+                    
                 </div>
 
                 <!-- Homepage Settings -->
@@ -334,18 +276,7 @@
                         </label>
                     </div>
                     
-                    <div class="form-group">
-                        <label>
-                            <div class="toggle-switch">
-                                <input type="checkbox" id="homeSponsoredTopSites">
-                                <span class="slider"></span>
-                            </div>
-                            <div class="label-content">
-                                <span class="label-title">Show Sponsored Top Sites</span>
-                                <span class="label-description">Allow sponsored site suggestions (disable for privacy)</span>
-                            </div>
-                        </label>
-                    </div>
+                    
                     
                     <div class="form-group">
                         <label>
@@ -360,18 +291,6 @@
                         </label>
                     </div>
                     
-                    <div class="form-group">
-                        <label>
-                            <div class="toggle-switch">
-                                <input type="checkbox" id="homePocket">
-                                <span class="slider"></span>
-                            </div>
-                            <div class="label-content">
-                                <span class="label-title">Show Pocket</span>
-                                <span class="label-description">Display Pocket recommended articles</span>
-                            </div>
-                        </label>
-                    </div>
                 </div>
 
                 <!-- Privacy Settings -->
@@ -521,18 +440,6 @@
                         </label>
                     </div>
 
-                    <div class="form-group">
-                        <label>
-                            <div class="toggle-switch">
-                                <input type="checkbox" id="extensionRecommendations">
-                                <span class="slider"></span>
-                            </div>
-                            <div class="label-content">
-                                <span class="label-title">Extension Recommendations</span>
-                                <span class="label-description">Show Mozilla's extension recommendations</span>
-                            </div>
-                        </label>
-                    </div>
                 </div>
 
                 <!-- Search Engines -->
@@ -646,16 +553,6 @@
                         </label>
                     </div>
 
-                    <div class="form-group">
-                        <label class="text-label">Proxy Configuration</label>
-                        <select class="select-field" id="proxyMode">
-                            <option value="none" selected>No Proxy</option>
-                            <option value="system">Use System Proxy</option>
-                            <option value="manual">Manual Proxy</option>
-                            <option value="autoDetect">Auto-detect Proxy</option>
-                        </select>
-                        <small class="help-text">Configure proxy settings for enterprise networks</small>
-                    </div>
                 </div>
             </div>
 
