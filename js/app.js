@@ -330,15 +330,18 @@
         }
 
         // Copy to clipboard
-        function copyToClipboard() {
+        function copyToClipboard(buttonParam) {
             const text = JSON.stringify(currentPolicy, null, 2);
             navigator.clipboard.writeText(text).then(() => {
-                const button = event.target;
-                const originalText = button.textContent;
-                button.textContent = 'Copied!';
-                setTimeout(() => {
-                    button.textContent = originalText;
-                }, 2000);
+                // Handle both direct parameter and event.target
+                const button = buttonParam || (typeof event !== 'undefined' ? event.target : null);
+                if (button) {
+                    const originalText = button.textContent;
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 2000);
+                }
             });
         }
 
