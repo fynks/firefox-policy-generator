@@ -9,6 +9,7 @@
             { name: "G", url: "https://www.google.com/search?q={searchTerms}", alias: "!g" },
             { name: "Brave", url: "https://search.brave.com/search?q={searchTerms}", alias: "!b" },
             { name: "Startpage", url: "https://www.startpage.com/do/search?q={searchTerms}", alias: "" },
+            { name: "DuckDuckGo", url: "https://duckduckgo.com/?q={searchTerms}", alias: "!ddg" },
             { name: "YouTube", url: "https://www.youtube.com/results?search_query={searchTerms}", alias: "!yt" }
         ];
 
@@ -16,6 +17,8 @@
 
         // Initialize the tool
         function init() {
+            updateExtensionList();
+            updateSearchEngineList();
             generatePolicy();
             showSuccessMessage();
             
@@ -36,6 +39,7 @@
         function generatePolicy() {
             const policy = {
                 "__COMMENT__ More Information": "https://github.com/mozilla/policy-templates/blob/master/README.md",
+                "__COMMENT__ Generated": `Firefox Policy Generator - ${new Date().toISOString()}`,
                 "policies": {}
             };
 
@@ -58,6 +62,12 @@
             if (document.getElementById('disableTelemetry').checked) {
                 policy.policies.DisableTelemetry = true;
             }
+            if (document.getElementById('disableAppUpdate').checked) {
+                policy.policies.DisableAppUpdate = true;
+            }
+            if (document.getElementById('disableSystemAddonUpdate').checked) {
+                policy.policies.DisableSystemAddonUpdate = true;
+            }
 
             // UI settings
             const bookmarksToolbar = document.getElementById('displayBookmarksToolbar').value;
@@ -73,15 +83,28 @@
             if (document.getElementById('disableDeveloperTools').checked) {
                 policy.policies.DisableDeveloperTools = true;
             }
+            if (document.getElementById('disablePasswordReveal').checked) {
+                policy.policies.DisablePasswordReveal = true;
+            }
+            if (document.getElementById('disablePrivateBrowsing').checked) {
+                policy.policies.DisablePrivateBrowsing = true;
+            }
 
             // Homepage settings
             const homepageURL = document.getElementById('homepageURL').value;
             const startPage = document.getElementById('startPage').value;
+            const newTabURL = document.getElementById('newTabURL').value;
+            
             if (homepageURL || startPage !== 'none') {
                 policy.policies.Homepage = {};
                 if (homepageURL) policy.policies.Homepage.URL = homepageURL;
                 if (startPage !== 'none') policy.policies.Homepage.StartPage = startPage;
                 policy.policies.Homepage.Locked = false;
+            }
+
+            if (newTabURL) {
+                policy.policies.NewTabPage = false;
+                policy.policies.OverrideFirstRunPage = newTabURL;
             }
 
             // Firefox Home settings
@@ -103,6 +126,22 @@
             if (!document.getElementById('offerToSaveLogins').checked) {
                 policy.policies.OfferToSaveLogins = false;
             }
+            if (document.getElementById('disableFormHistory').checked) {
+                policy.policies.DisableFormHistory = true;
+            }
+            if (document.getElementById('disablePasswordManager').checked) {
+                policy.policies.PasswordManagerEnabled = false;
+            }
+
+            // Enhanced Tracking Protection
+            if (document.getElementById('trackingProtection').checked) {
+                policy.policies.EnableTrackingProtection = {
+                    Value: true,
+                    Locked: true,
+                    Cryptomining: true,
+                    Fingerprinting: true
+                };
+            }
 
             // Firefox Suggest
             policy.policies.FirefoxSuggest = {
@@ -111,6 +150,27 @@
                 ImproveSuggest: true,
                 Locked: false
             };
+
+            // DNS over HTTPS
+            const dnsOverHttps = document.getElementById('dnsOverHttps').value;
+            if (dnsOverHttps !== 'default') {
+                if (dnsOverHttps === 'disabled') {
+                    policy.policies.DNSOverHTTPS = {
+                        Enabled: false,
+                        Locked: true
+                    };
+                } else {
+                    const dnsProviders = {
+                        cloudflare: "https://mozilla.cloudflare-dns.com/dns-query",
+                        quad9: "https://dns.quad9.net/dns-query"
+                    };
+                    policy.policies.DNSOverHTTPS = {
+                        Enabled: true,
+                        ProviderURL: dnsProviders[dnsOverHttps],
+                        Locked: true
+                    };
+                }
+            }
 
             // Extensions
             if (extensionsToInstall.length > 0) {
@@ -127,6 +187,17 @@
                 };
             }
 
+            // Extension policies
+            if (document.getElementById('blockExtensionInstall').checked) {
+                policy.policies.InstallAddonsPermission = {
+                    Allow: [],
+                    Default: false
+                };
+            }
+            if (!document.getElementById('extensionRecommendations').checked) {
+                policy.policies.ExtensionRecommendations = false;
+            }
+
             // Search engines
             if (searchEngines.length > 0) {
                 policy.policies.SearchEngines = {
@@ -137,15 +208,53 @@
                         Alias: engine.alias,
                         Method: "GET"
                     })),
-                    PreventInstalls: false,
+                    PreventInstalls: document.getElementById('preventSearchEngineInstalls').checked,
                     Remove: ["Google", "Bing", "Amazon.com", "eBay", "Twitter", "Wikipedia"]
                 };
             }
 
-            // Add override pages
+            // Content blocking and network security
+            const contentBlocking = document.getElementById('contentBlocking').value;
+            if (contentBlocking === 'strict') {
+                policy.policies.EnableTrackingProtection = {
+                    Value: true,
+                    Locked: true,
+                    Cryptomining: true,
+                    Fingerprinting: true
+                };
+            }
+
+            // Download protection
+            if (document.getElementById('blockDangerousDownloads').checked) {
+                policy.policies.DisableBuiltinPDFViewer = false; // Keep PDF viewer for security
+            }
+            if (document.getElementById('blockUncommonDownloads').checked) {
+                policy.policies.DownloadRestrictions = {
+                    ApplicationZip: false,
+                    Executable: false
+                };
+            }
+
+            // WebRTC
+            if (document.getElementById('disableWebRTC').checked) {
+                policy.policies.WebRTCIPHandlingPolicy = "disable_non_proxied_udp";
+            }
+
+            // Proxy settings
+            const proxyMode = document.getElementById('proxyMode').value;
+            if (proxyMode !== 'none') {
+                policy.policies.Proxy = {
+                    Mode: proxyMode,
+                    Locked: true
+                };
+            }
+
+            // Additional security policies
             policy.policies.OverrideFirstRunPage = "";
             policy.policies.OverridePostUpdatePage = "";
             policy.policies.DisableSetDesktopBackground = true;
+            policy.policies.DisableBuiltinPDFViewer = false;
+            policy.policies.BlockAboutConfig = false;
 
             // Store current policy
             currentPolicy = policy;
@@ -211,13 +320,32 @@
                 item.className = 'extension-item';
                 
                 let name = 'Custom Extension';
-                if (url.includes('ublock-origin')) name = 'uBlock Origin';
-                else if (url.includes('bitwarden')) name = 'Bitwarden';
-                else if (url.includes('multi-account-containers')) name = 'Multi-Account Containers';
+                if (url.includes('ublock-origin')) name = 'uBlock Origin - Ad & Tracker Blocker';
+                else if (url.includes('bitwarden')) name = 'Bitwarden - Password Manager';
+                else if (url.includes('multi-account-containers')) name = 'Multi-Account Containers - Isolation';
                 
                 item.innerHTML = `
                     <span>${name}</span>
                     <button class="btn btn-danger" onclick="removeExtension(this, 'install')">Remove</button>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        // Update search engine list display
+        function updateSearchEngineList() {
+            const list = document.getElementById('searchEngineList');
+            list.innerHTML = '';
+            
+            searchEngines.forEach(engine => {
+                const item = document.createElement('div');
+                item.className = 'extension-item';
+                
+                const displayName = `${engine.name}${engine.alias ? ' (' + engine.alias + ')' : ''}`;
+                
+                item.innerHTML = `
+                    <span>${displayName}</span>
+                    <button class="btn btn-danger" onclick="removeExtension(this, 'search')">Remove</button>
                 `;
                 list.appendChild(item);
             });

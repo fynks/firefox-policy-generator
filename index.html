@@ -65,67 +65,147 @@
     <header class="header">
         <h1>Firefox Policy Generator</h1>
         <p>Professional Firefox policy configuration made simple</p>
+        <div class="header-info">
+            <p>Create enterprise-grade Firefox policies.json files to manage browser settings, security, and compliance across your organization. No technical expertise required.</p>
+        </div>
     </header>
 
     <!-- Main content wrapper -->
     <div class="content-wrapper">
+        <!-- About Section -->
+        <div class="about-section">
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="icon">🔒</div>
+                    <h3>Enterprise Security</h3>
+                    <p>Control privacy settings, disable risky features, and enforce security policies across your organization's Firefox browsers.</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">⚙️</div>
+                    <h3>Centralized Management</h3>
+                    <p>Deploy consistent browser configurations to hundreds or thousands of users without touching individual machines.</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">🚀</div>
+                    <h3>Easy Deployment</h3>
+                    <p>Generate policies.json files instantly and deploy them via Group Policy, SCCM, or simple file placement.</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">📋</div>
+                    <h3>Compliance Ready</h3>
+                    <p>Meet regulatory requirements with pre-configured security settings and audit-friendly policy documentation.</p>
+                </div>
+            </div>
+        </div>
+
         <div class="main-content">
             <div class="settings-panel">
                 <!-- Basic Settings -->
                 <div class="section">
                     <h3>Basic Settings</h3>
+                    <p class="section-description">Core Firefox behaviors and enterprise preferences.</p>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
-                                <input type="checkbox" id="dontCheckDefaultBrowser" checked>
+                                <input type="checkbox" id="dontCheckDefaultBrowser">
                                 <span class="slider"></span>
                             </div>
-                            Don't check if Firefox is default browser
+                            <div class="label-content">
+                                <span class="label-title">Don't check if Firefox is default browser</span>
+                                <span class="label-description">Prevents Firefox from asking users to set it as the default browser</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
-                                <input type="checkbox" id="disableFeedbackCommands" checked>
+                                <input type="checkbox" id="disableFeedbackCommands">
                                 <span class="slider"></span>
                             </div>
-                            Disable feedback commands
+                            <div class="label-content">
+                                <span class="label-title">Disable feedback commands</span>
+                                <span class="label-description">Removes "Submit Feedback" from Help menu and other feedback prompts</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
-                                <input type="checkbox" id="disableFirefoxAccounts" checked>
+                                <input type="checkbox" id="disableFirefoxAccounts">
                                 <span class="slider"></span>
                             </div>
-                            Disable Firefox Accounts
+                            <div class="label-content">
+                                <span class="label-title">Disable Firefox Accounts</span>
+                                <span class="label-description">Prevents users from signing into Firefox Sync and related services</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="disableFirefoxScreenshots">
                                 <span class="slider"></span>
                             </div>
-                            Disable Firefox Screenshots
+                            <div class="label-content">
+                                <span class="label-title">Disable Firefox Screenshots</span>
+                                <span class="label-description">Removes the built-in screenshot tool from Firefox</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="disableFirefoxStudies" checked>
                                 <span class="slider"></span>
                             </div>
-                            Disable Firefox Studies
+                            <div class="label-content">
+                                <span class="label-title">Disable Firefox Studies</span>
+                                <span class="label-description">Prevents Firefox from installing and running studies/experiments</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="disableTelemetry" checked>
                                 <span class="slider"></span>
                             </div>
-                            Disable Telemetry
+                            <div class="label-content">
+                                <span class="label-title">Disable Telemetry</span>
+                                <span class="label-description">Stops Firefox from sending usage data to Mozilla</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disableAppUpdate">
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Disable Automatic Updates</span>
+                                <span class="label-description">Prevents Firefox from automatically updating (manage updates centrally)</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disableSystemAddonUpdate">
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Disable System Add-on Updates</span>
+                                <span class="label-description">Prevents automatic updates of built-in Firefox add-ons</span>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -133,6 +213,8 @@
                 <!-- UI Settings -->
                 <div class="section">
                     <h3>User Interface</h3>
+                    <p class="section-description">Control Firefox's user interface elements and accessibility.</p>
+                    
                     <div class="form-group">
                         <label class="text-label">Display Bookmarks Toolbar</label>
                         <select class="select-field" id="displayBookmarksToolbar">
@@ -140,7 +222,9 @@
                             <option value="never" selected>Never</option>
                             <option value="newtab">New Tab Only</option>
                         </select>
+                        <small class="help-text">Controls when the bookmarks toolbar is visible</small>
                     </div>
+                    
                     <div class="form-group">
                         <label class="text-label">Display Menu Bar</label>
                         <select class="select-field" id="displayMenuBar">
@@ -148,14 +232,45 @@
                             <option value="default-off">Default Off</option>
                             <option value="never" selected>Never</option>
                         </select>
+                        <small class="help-text">Controls the traditional menu bar (File, Edit, View, etc.)</small>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="disableDeveloperTools">
                                 <span class="slider"></span>
                             </div>
-                            Disable Developer Tools
+                            <div class="label-content">
+                                <span class="label-title">Disable Developer Tools</span>
+                                <span class="label-description">Prevents access to F12 developer tools (recommended for security)</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disablePasswordReveal">
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Disable Password Reveal</span>
+                                <span class="label-description">Removes the "show password" eye icon from password fields</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disablePrivateBrowsing">
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Disable Private Browsing</span>
+                                <span class="label-description">Removes access to private/incognito browsing mode</span>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -163,10 +278,14 @@
                 <!-- Homepage Settings -->
                 <div class="section">
                     <h3>Homepage & New Tab</h3>
+                    <p class="section-description">Configure what users see when opening Firefox or new tabs.</p>
+                    
                     <div class="form-group">
                         <label class="text-label">Homepage URL</label>
-                        <input type="text" class="input-field" id="homepageURL" value="about:home" placeholder="Enter homepage URL">
+                        <input type="text" class="input-field" id="homepageURL" value="about:home" placeholder="https://example.com or about:home">
+                        <small class="help-text">URL shown when Firefox starts or when clicking Home button</small>
                     </div>
+                    
                     <div class="form-group">
                         <label class="text-label">Start Page</label>
                         <select class="select-field" id="startPage">
@@ -174,55 +293,83 @@
                             <option value="homepage" selected>Homepage</option>
                             <option value="previous-session">Previous Session</option>
                         </select>
+                        <small class="help-text">What page opens when Firefox starts</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-label">New Tab Page URL</label>
+                        <input type="text" class="input-field" id="newTabURL" placeholder="https://example.com or leave empty for default">
+                        <small class="help-text">Custom URL for new tabs (leave empty for Firefox default)</small>
                     </div>
                 </div>
 
                 <!-- Firefox Home Settings -->
                 <div class="section">
                     <h3>Firefox Home</h3>
+                    <p class="section-description">Control what appears on Firefox's new tab page.</p>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="homeSearch" checked>
                                 <span class="slider"></span>
                             </div>
-                            Show Search
+                            <div class="label-content">
+                                <span class="label-title">Show Search</span>
+                                <span class="label-description">Display search bar on new tab page</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="homeTopSites">
                                 <span class="slider"></span>
                             </div>
-                            Show Top Sites
+                            <div class="label-content">
+                                <span class="label-title">Show Top Sites</span>
+                                <span class="label-description">Display frequently visited sites thumbnails</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="homeSponsoredTopSites">
                                 <span class="slider"></span>
                             </div>
-                            Show Sponsored Top Sites
+                            <div class="label-content">
+                                <span class="label-title">Show Sponsored Top Sites</span>
+                                <span class="label-description">Allow sponsored site suggestions (disable for privacy)</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="homeHighlights">
                                 <span class="slider"></span>
                             </div>
-                            Show Highlights
+                            <div class="label-content">
+                                <span class="label-title">Show Highlights</span>
+                                <span class="label-description">Display recently bookmarked and visited pages</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="homePocket">
                                 <span class="slider"></span>
                             </div>
-                            Show Pocket
+                            <div class="label-content">
+                                <span class="label-title">Show Pocket</span>
+                                <span class="label-description">Display Pocket recommended articles</span>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -230,93 +377,197 @@
                 <!-- Privacy Settings -->
                 <div class="section">
                     <h3>Privacy & Security</h3>
+                    <p class="section-description">Control privacy settings, data collection, and security features.</p>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="noDefaultBookmarks" checked>
                                 <span class="slider"></span>
                             </div>
-                            No Default Bookmarks
+                            <div class="label-content">
+                                <span class="label-title">No Default Bookmarks</span>
+                                <span class="label-description">Removes Firefox's default bookmarks folder</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="offerToSaveLogins">
                                 <span class="slider"></span>
                             </div>
-                            Offer to Save Logins
+                            <div class="label-content">
+                                <span class="label-title">Offer to Save Logins</span>
+                                <span class="label-description">Prompt users to save passwords</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="webSuggestions" checked>
                                 <span class="slider"></span>
                             </div>
-                            Web Suggestions
+                            <div class="label-content">
+                                <span class="label-title">Web Suggestions</span>
+                                <span class="label-description">Show web suggestions in address bar</span>
+                            </div>
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>
                             <div class="toggle-switch">
                                 <input type="checkbox" id="sponsoredSuggestions">
                                 <span class="slider"></span>
                             </div>
-                            Sponsored Suggestions
+                            <div class="label-content">
+                                <span class="label-title">Sponsored Suggestions</span>
+                                <span class="label-description">Allow sponsored suggestions in address bar (disable for privacy)</span>
+                            </div>
                         </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disableFormHistory">
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Disable Form History</span>
+                                <span class="label-description">Prevents Firefox from remembering form entries</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="trackingProtection" checked>
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Enhanced Tracking Protection</span>
+                                <span class="label-description">Enable strict tracking protection by default</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disablePasswordManager">
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Disable Password Manager</span>
+                                <span class="label-description">Completely disable Firefox's built-in password manager</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-label">DNS over HTTPS Provider</label>
+                        <select class="select-field" id="dnsOverHttps">
+                            <option value="default">Browser Default</option>
+                            <option value="cloudflare">Cloudflare (1.1.1.1)</option>
+                            <option value="quad9">Quad9 (9.9.9.9)</option>
+                            <option value="disabled">Disabled</option>
+                        </select>
+                        <small class="help-text">Secure DNS resolution to prevent DNS hijacking</small>
                     </div>
                 </div>
 
                 <!-- Extensions -->
                 <div class="section">
                     <h3>Extensions</h3>
+                    <p class="section-description">Manage extensions for automatic installation and configure extension policies.</p>
+                    
                     <div class="form-group">
-                        <label class="text-label">Extensions to Install</label>
+                        <label class="text-label">Pre-installed Security Extensions</label>
                         <div class="extension-list" id="extensionInstallList">
                             <div class="extension-item">
-                                <span>uBlock Origin</span>
+                                <span>uBlock Origin - Ad & Tracker Blocker</span>
                                 <button class="btn btn-danger" onclick="removeExtension(this, 'install')">Remove</button>
                             </div>
                             <div class="extension-item">
-                                <span>Bitwarden</span>
+                                <span>Bitwarden - Password Manager</span>
                                 <button class="btn btn-danger" onclick="removeExtension(this, 'install')">Remove</button>
                             </div>
                             <div class="extension-item">
-                                <span>Multi-Account Containers</span>
+                                <span>Multi-Account Containers - Isolation</span>
                                 <button class="btn btn-danger" onclick="removeExtension(this, 'install')">Remove</button>
                             </div>
                         </div>
-                        <input type="text" class="input-field" id="newExtensionURL" placeholder="Extension XPI URL" style="margin-top: 12px;">
+                        <input type="text" class="input-field" id="newExtensionURL" placeholder="Extension XPI URL (e.g., https://addons.mozilla.org/firefox/downloads/latest/extension-name/latest.xpi)" style="margin-top: 12px;">
                         <button class="btn btn-primary" onclick="addExtension('install')" style="margin-top: 8px;">Add Extension</button>
+                        <small class="help-text">These extensions will be automatically installed for all users</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="blockExtensionInstall">
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Block User Extension Installation</span>
+                                <span class="label-description">Prevent users from installing additional extensions</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="extensionRecommendations">
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Extension Recommendations</span>
+                                <span class="label-description">Show Mozilla's extension recommendations</span>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
                 <!-- Search Engines -->
                 <div class="section">
                     <h3>Search Engines</h3>
+                    <p class="section-description">Configure default search engine and manage available search providers.</p>
+                    
                     <div class="form-group">
                         <label class="text-label">Default Search Engine</label>
                         <select class="select-field" id="defaultSearchEngine">
                             <option value="G" selected>Google</option>
-                            <option value="Brave">Brave</option>
-                            <option value="Startpage">Startpage</option>
-                            <option value="YouTube">YouTube</option>
+                            <option value="Brave">Brave Search</option>
+                            <option value="Startpage">Startpage (Privacy-focused Google)</option>
+                            <option value="DuckDuckGo">DuckDuckGo</option>
                         </select>
+                        <small class="help-text">The search engine used by default in the address bar</small>
                     </div>
+                    
                     <div class="form-group">
-                        <label class="text-label">Custom Search Engines</label>
+                        <label class="text-label">Available Search Engines</label>
                         <div class="extension-list" id="searchEngineList">
                             <div class="extension-item">
                                 <span>Google (!g)</span>
                                 <button class="btn btn-danger" onclick="removeExtension(this, 'search')">Remove</button>
                             </div>
                             <div class="extension-item">
-                                <span>Brave (!b)</span>
+                                <span>Brave Search (!b)</span>
                                 <button class="btn btn-danger" onclick="removeExtension(this, 'search')">Remove</button>
                             </div>
                             <div class="extension-item">
-                                <span>Startpage</span>
+                                <span>Startpage (Privacy)</span>
+                                <button class="btn btn-danger" onclick="removeExtension(this, 'search')">Remove</button>
+                            </div>
+                            <div class="extension-item">
+                                <span>DuckDuckGo (!ddg)</span>
                                 <button class="btn btn-danger" onclick="removeExtension(this, 'search')">Remove</button>
                             </div>
                             <div class="extension-item">
@@ -324,6 +575,86 @@
                                 <button class="btn btn-danger" onclick="removeExtension(this, 'search')">Remove</button>
                             </div>
                         </div>
+                        <small class="help-text">Search engines available to users with keyboard shortcuts</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="preventSearchEngineInstalls">
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Prevent Search Engine Installation</span>
+                                <span class="label-description">Block users from adding new search engines</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Content Blocking & Network -->
+                <div class="section">
+                    <h3>Content Blocking & Network</h3>
+                    <p class="section-description">Advanced security and content filtering options.</p>
+                    
+                    <div class="form-group">
+                        <label class="text-label">Content Blocking Level</label>
+                        <select class="select-field" id="contentBlocking">
+                            <option value="standard">Standard Protection</option>
+                            <option value="strict" selected>Strict Protection</option>
+                            <option value="custom">Custom Protection</option>
+                        </select>
+                        <small class="help-text">Controls tracking protection and content blocking strictness</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="blockDangerousDownloads" checked>
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Block Dangerous Downloads</span>
+                                <span class="label-description">Prevent downloads of potentially harmful files</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="blockUncommonDownloads" checked>
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Block Uncommon Downloads</span>
+                                <span class="label-description">Warn about downloads that are uncommon</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="disableWebRTC">
+                                <span class="slider"></span>
+                            </div>
+                            <div class="label-content">
+                                <span class="label-title">Disable WebRTC</span>
+                                <span class="label-description">Prevents WebRTC IP leaks (may break video calls)</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-label">Proxy Configuration</label>
+                        <select class="select-field" id="proxyMode">
+                            <option value="none" selected>No Proxy</option>
+                            <option value="system">Use System Proxy</option>
+                            <option value="manual">Manual Proxy</option>
+                            <option value="autoDetect">Auto-detect Proxy</option>
+                        </select>
+                        <small class="help-text">Configure proxy settings for enterprise networks</small>
                     </div>
                 </div>
             </div>
