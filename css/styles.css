@@ -496,63 +496,6 @@
             }
         }
 
-        /* Improved scrollbar styling */
-/* Header enhancements */
-.header-info {
-    max-width: 800px;
-    margin: 24px auto 0;
-    font-size: 1.1rem;
-    opacity: 0.95;
-    line-height: 1.7;
-}
-
-/* About section */
-.about-section {
-    margin-bottom: 48px;
-    padding: 0 32px;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.about-card {
-    background: var(--bg-card);
-    padding: 32px 24px;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-light);
-    text-align: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.about-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
-
-.about-card .icon {
-    font-size: 3rem;
-    margin-bottom: 16px;
-    display: block;
-}
-
-.about-card h3 {
-    color: var(--text-primary);
-    margin-bottom: 16px;
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-.about-card p {
-    color: var(--text-secondary);
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
 
 /* Section descriptions */
 .section-description {
@@ -661,31 +604,8 @@
     color: #d97706;
 }
 
-/* Enhanced responsive design */
-@media (max-width: 1024px) {
-    .about-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
-    
-    .about-section {
-        padding: 0 16px;
-    }
-}
 
 @media (max-width: 768px) {
-    .header-info {
-        font-size: 1rem;
-        margin-top: 16px;
-    }
-    
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .about-card {
-        padding: 24px 20px;
-    }
     
     .label-content {
         gap: 2px;
